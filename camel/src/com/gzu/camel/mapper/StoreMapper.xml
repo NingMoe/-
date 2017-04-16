@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.gzu.camel.mapper.StoreMapper" >
   <resultMap id="BaseResultMap" type="com.gzu.camel.pojo.Store" >
-    <id column="storeid" property="storeid" jdbcType="VARCHAR" />
-    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <id column="storeid" property="storeid" jdbcType="INTEGER" />
+    <id column="userid" property="userid" jdbcType="VARCHAR" />
     <result column="sname" property="sname" jdbcType="VARCHAR" />
     <result column="sphone" property="sphone" jdbcType="VARCHAR" />
   </resultMap>
@@ -82,15 +82,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.gzu.camel.pojo.StoreKey" >
     select 
     <include refid="Base_Column_List" />
     from store
-    where storeid = #{storeid,jdbcType=VARCHAR}
+    where storeid = #{storeid,jdbcType=INTEGER}
+      and userid = #{userid,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="com.gzu.camel.pojo.StoreKey" >
     delete from store
-    where storeid = #{storeid,jdbcType=VARCHAR}
+    where storeid = #{storeid,jdbcType=INTEGER}
+      and userid = #{userid,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.gzu.camel.pojo.StoreExample" >
     delete from store
@@ -101,7 +103,7 @@
   <insert id="insert" parameterType="com.gzu.camel.pojo.Store" >
     insert into store (storeid, userid, sname, 
       sphone)
-    values (#{storeid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{sname,jdbcType=VARCHAR}, 
+    values (#{storeid,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{sname,jdbcType=VARCHAR}, 
       #{sphone,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.gzu.camel.pojo.Store" >
@@ -122,7 +124,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="storeid != null" >
-        #{storeid,jdbcType=VARCHAR},
+        #{storeid,jdbcType=INTEGER},
       </if>
       <if test="userid != null" >
         #{userid,jdbcType=VARCHAR},
@@ -145,7 +147,7 @@
     update store
     <set >
       <if test="record.storeid != null" >
-        storeid = #{record.storeid,jdbcType=VARCHAR},
+        storeid = #{record.storeid,jdbcType=INTEGER},
       </if>
       <if test="record.userid != null" >
         userid = #{record.userid,jdbcType=VARCHAR},
@@ -163,7 +165,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update store
-    set storeid = #{record.storeid,jdbcType=VARCHAR},
+    set storeid = #{record.storeid,jdbcType=INTEGER},
       userid = #{record.userid,jdbcType=VARCHAR},
       sname = #{record.sname,jdbcType=VARCHAR},
       sphone = #{record.sphone,jdbcType=VARCHAR}
@@ -174,9 +176,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.gzu.camel.pojo.Store" >
     update store
     <set >
-      <if test="userid != null" >
-        userid = #{userid,jdbcType=VARCHAR},
-      </if>
       <if test="sname != null" >
         sname = #{sname,jdbcType=VARCHAR},
       </if>
@@ -184,17 +183,14 @@
         sphone = #{sphone,jdbcType=VARCHAR},
       </if>
     </set>
-    where storeid = #{storeid,jdbcType=VARCHAR}
+    where storeid = #{storeid,jdbcType=INTEGER}
+      and userid = #{userid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gzu.camel.pojo.Store" >
     update store
-    set userid = #{userid,jdbcType=VARCHAR},
-      sname = #{sname,jdbcType=VARCHAR},
+    set sname = #{sname,jdbcType=VARCHAR},
       sphone = #{sphone,jdbcType=VARCHAR}
-    where storeid = #{storeid,jdbcType=VARCHAR}
+    where storeid = #{storeid,jdbcType=INTEGER}
+      and userid = #{userid,jdbcType=VARCHAR}
   </update>
-  
-  
-  
-   <!-- 在此处写自定义sql，方便管理 -->
 </mapper>

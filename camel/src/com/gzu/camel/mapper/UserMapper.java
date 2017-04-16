@@ -27,7 +27,4 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
-    
-    
-    /*自己添加的方法，方便管理*/
 }

@@ -1,11 +1,11 @@
 package com.gzu.camel.pojo;
 
 public class Product {
-    private String pid;
+    private Integer pid;
 
-    private String storeid;
+    private Integer storeid;
 
-    private String typeid;
+    private Integer typeid;
 
     private String pname;
 
@@ -17,28 +17,28 @@ public class Product {
 
     private Integer pimageno;
 
-    public String getPid() {
+    public Integer getPid() {
         return pid;
     }
 
-    public void setPid(String pid) {
-        this.pid = pid == null ? null : pid.trim();
+    public void setPid(Integer pid) {
+        this.pid = pid;
     }
 
-    public String getStoreid() {
+    public Integer getStoreid() {
         return storeid;
     }
 
-    public void setStoreid(String storeid) {
-        this.storeid = storeid == null ? null : storeid.trim();
+    public void setStoreid(Integer storeid) {
+        this.storeid = storeid;
     }
 
-    public String getTypeid() {
+    public Integer getTypeid() {
         return typeid;
     }
 
-    public void setTypeid(String typeid) {
-        this.typeid = typeid == null ? null : typeid.trim();
+    public void setTypeid(Integer typeid) {
+        this.typeid = typeid;
     }
 
     public String getPname() {

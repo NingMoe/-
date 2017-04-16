@@ -3,7 +3,7 @@
 <mapper namespace="com.gzu.camel.mapper.ShopingcarMapper" >
   <resultMap id="BaseResultMap" type="com.gzu.camel.pojo.Shopingcar" >
     <id column="userid" property="userid" jdbcType="VARCHAR" />
-    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
     <result column="number" property="number" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -100,7 +100,7 @@
   <insert id="insert" parameterType="com.gzu.camel.pojo.Shopingcar" >
     insert into shopingcar (userid, pid, number
       )
-    values (#{userid,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}
+    values (#{userid,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.gzu.camel.pojo.Shopingcar" >
@@ -121,7 +121,7 @@
         #{userid,jdbcType=VARCHAR},
       </if>
       <if test="pid != null" >
-        #{pid,jdbcType=VARCHAR},
+        #{pid,jdbcType=INTEGER},
       </if>
       <if test="number != null" >
         #{number,jdbcType=INTEGER},
@@ -141,7 +141,7 @@
         userid = #{record.userid,jdbcType=VARCHAR},
       </if>
       <if test="record.pid != null" >
-        pid = #{record.pid,jdbcType=VARCHAR},
+        pid = #{record.pid,jdbcType=INTEGER},
       </if>
       <if test="record.number != null" >
         number = #{record.number,jdbcType=INTEGER},
@@ -154,7 +154,7 @@
   <update id="updateByExample" parameterType="map" >
     update shopingcar
     set userid = #{record.userid,jdbcType=VARCHAR},
-      pid = #{record.pid,jdbcType=VARCHAR},
+      pid = #{record.pid,jdbcType=INTEGER},
       number = #{record.number,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -164,7 +164,7 @@
     update shopingcar
     <set >
       <if test="pid != null" >
-        pid = #{pid,jdbcType=VARCHAR},
+        pid = #{pid,jdbcType=INTEGER},
       </if>
       <if test="number != null" >
         number = #{number,jdbcType=INTEGER},
@@ -174,11 +174,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gzu.camel.pojo.Shopingcar" >
     update shopingcar
-    set pid = #{pid,jdbcType=VARCHAR},
+    set pid = #{pid,jdbcType=INTEGER},
       number = #{number,jdbcType=INTEGER}
     where userid = #{userid,jdbcType=VARCHAR}
   </update>
-  
-  
-   <!-- 在此处写自定义sql，方便管理 -->
 </mapper>

@@ -27,7 +27,4 @@ public interface AdminMapper {
     int updateByPrimaryKeySelective(Admin record);
 
     int updateByPrimaryKey(Admin record);
-    
-    
-    /*自己添加的方法，方便管理*/
 }

@@ -2,6 +2,8 @@ package com.gzu.camel.mapper;
 
 import com.gzu.camel.pojo.Product;
 import com.gzu.camel.pojo.ProductExample;
+import com.gzu.camel.pojo.ProductSplitPageVo;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,7 +12,7 @@ public interface ProductMapper {
 
     int deleteByExample(ProductExample example);
 
-    int deleteByPrimaryKey(String pid);
+    int deleteByPrimaryKey(Integer pid);
 
     int insert(Product record);
 
@@ -18,7 +20,7 @@ public interface ProductMapper {
 
     List<Product> selectByExample(ProductExample example);
 
-    Product selectByPrimaryKey(String pid);
+    Product selectByPrimaryKey(Integer pid);
 
     int updateByExampleSelective(@Param("record") Product record, @Param("example") ProductExample example);
 
@@ -27,10 +29,17 @@ public interface ProductMapper {
     int updateByPrimaryKeySelective(Product record);
 
     int updateByPrimaryKey(Product record);
+    
+    
+    
     /*自己添加的方法，方便管理*/
     
     
     
-     /* 根据商品名字，模糊查询商品总数*/
-    int countByProductName(String name);
+    /* 根据商品名字，模糊查询商品总数*/
+   int countByProductName(String name);
+   
+   //商品分页
+   List<Product> selectSplitPage(ProductSplitPageVo productSplitPageVo);
+   
 }

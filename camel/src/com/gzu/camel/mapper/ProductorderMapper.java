@@ -27,7 +27,4 @@ public interface ProductorderMapper {
     int updateByPrimaryKeySelective(Productorder record);
 
     int updateByPrimaryKey(Productorder record);
-    
-    
-    /*自己添加的方法，方便管理*/
 }

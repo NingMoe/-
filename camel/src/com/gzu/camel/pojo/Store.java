@@ -1,29 +1,9 @@
 package com.gzu.camel.pojo;
 
-public class Store {
-    private String storeid;
-
-    private String userid;
-
+public class Store extends StoreKey {
     private String sname;
 
     private String sphone;
-
-    public String getStoreid() {
-        return storeid;
-    }
-
-    public void setStoreid(String storeid) {
-        this.storeid = storeid == null ? null : storeid.trim();
-    }
-
-    public String getUserid() {
-        return userid;
-    }
-
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
-    }
 
     public String getSname() {
         return sname;

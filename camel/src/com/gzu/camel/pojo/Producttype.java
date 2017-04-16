@@ -1,16 +1,16 @@
 package com.gzu.camel.pojo;
 
 public class Producttype {
-    private String typeid;
+    private Integer typeid;
 
     private String typename;
 
-    public String getTypeid() {
+    public Integer getTypeid() {
         return typeid;
     }
 
-    public void setTypeid(String typeid) {
-        this.typeid = typeid == null ? null : typeid.trim();
+    public void setTypeid(Integer typeid) {
+        this.typeid = typeid;
     }
 
     public String getTypename() {

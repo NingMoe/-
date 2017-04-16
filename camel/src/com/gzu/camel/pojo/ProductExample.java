@@ -114,62 +114,52 @@ public class ProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andPidEqualTo(String value) {
+        public Criteria andPidEqualTo(Integer value) {
             addCriterion("pid =", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidNotEqualTo(String value) {
+        public Criteria andPidNotEqualTo(Integer value) {
             addCriterion("pid <>", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidGreaterThan(String value) {
+        public Criteria andPidGreaterThan(Integer value) {
             addCriterion("pid >", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidGreaterThanOrEqualTo(String value) {
+        public Criteria andPidGreaterThanOrEqualTo(Integer value) {
             addCriterion("pid >=", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidLessThan(String value) {
+        public Criteria andPidLessThan(Integer value) {
             addCriterion("pid <", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidLessThanOrEqualTo(String value) {
+        public Criteria andPidLessThanOrEqualTo(Integer value) {
             addCriterion("pid <=", value, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidLike(String value) {
-            addCriterion("pid like", value, "pid");
-            return (Criteria) this;
-        }
-
-        public Criteria andPidNotLike(String value) {
-            addCriterion("pid not like", value, "pid");
-            return (Criteria) this;
-        }
-
-        public Criteria andPidIn(List<String> values) {
+        public Criteria andPidIn(List<Integer> values) {
             addCriterion("pid in", values, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidNotIn(List<String> values) {
+        public Criteria andPidNotIn(List<Integer> values) {
             addCriterion("pid not in", values, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidBetween(String value1, String value2) {
+        public Criteria andPidBetween(Integer value1, Integer value2) {
             addCriterion("pid between", value1, value2, "pid");
             return (Criteria) this;
         }
 
-        public Criteria andPidNotBetween(String value1, String value2) {
+        public Criteria andPidNotBetween(Integer value1, Integer value2) {
             addCriterion("pid not between", value1, value2, "pid");
             return (Criteria) this;
         }
@@ -184,62 +174,52 @@ public class ProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andStoreidEqualTo(String value) {
+        public Criteria andStoreidEqualTo(Integer value) {
             addCriterion("storeid =", value, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidNotEqualTo(String value) {
+        public Criteria andStoreidNotEqualTo(Integer value) {
             addCriterion("storeid <>", value, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidGreaterThan(String value) {
+        public Criteria andStoreidGreaterThan(Integer value) {
             addCriterion("storeid >", value, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidGreaterThanOrEqualTo(String value) {
+        public Criteria andStoreidGreaterThanOrEqualTo(Integer value) {
             addCriterion("storeid >=", value, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidLessThan(String value) {
+        public Criteria andStoreidLessThan(Integer value) {
             addCriterion("storeid <", value, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidLessThanOrEqualTo(String value) {
+        public Criteria andStoreidLessThanOrEqualTo(Integer value) {
             addCriterion("storeid <=", value, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidLike(String value) {
-            addCriterion("storeid like", value, "storeid");
-            return (Criteria) this;
-        }
-
-        public Criteria andStoreidNotLike(String value) {
-            addCriterion("storeid not like", value, "storeid");
-            return (Criteria) this;
-        }
-
-        public Criteria andStoreidIn(List<String> values) {
+        public Criteria andStoreidIn(List<Integer> values) {
             addCriterion("storeid in", values, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidNotIn(List<String> values) {
+        public Criteria andStoreidNotIn(List<Integer> values) {
             addCriterion("storeid not in", values, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidBetween(String value1, String value2) {
+        public Criteria andStoreidBetween(Integer value1, Integer value2) {
             addCriterion("storeid between", value1, value2, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidNotBetween(String value1, String value2) {
+        public Criteria andStoreidNotBetween(Integer value1, Integer value2) {
             addCriterion("storeid not between", value1, value2, "storeid");
             return (Criteria) this;
         }
@@ -254,62 +234,52 @@ public class ProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeidEqualTo(String value) {
+        public Criteria andTypeidEqualTo(Integer value) {
             addCriterion("typeid =", value, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andTypeidNotEqualTo(String value) {
+        public Criteria andTypeidNotEqualTo(Integer value) {
             addCriterion("typeid <>", value, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andTypeidGreaterThan(String value) {
+        public Criteria andTypeidGreaterThan(Integer value) {
             addCriterion("typeid >", value, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andTypeidGreaterThanOrEqualTo(String value) {
+        public Criteria andTypeidGreaterThanOrEqualTo(Integer value) {
             addCriterion("typeid >=", value, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andTypeidLessThan(String value) {
+        public Criteria andTypeidLessThan(Integer value) {
             addCriterion("typeid <", value, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andTypeidLessThanOrEqualTo(String value) {
+        public Criteria andTypeidLessThanOrEqualTo(Integer value) {
             addCriterion("typeid <=", value, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andTypeidLike(String value) {
-            addCriterion("typeid like", value, "typeid");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeidNotLike(String value) {
-            addCriterion("typeid not like", value, "typeid");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeidIn(List<String> values) {
+        public Criteria andTypeidIn(List<Integer> values) {
             addCriterion("typeid in", values, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andTypeidNotIn(List<String> values) {
+        public Criteria andTypeidNotIn(List<Integer> values) {
             addCriterion("typeid not in", values, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andTypeidBetween(String value1, String value2) {
+        public Criteria andTypeidBetween(Integer value1, Integer value2) {
             addCriterion("typeid between", value1, value2, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andTypeidNotBetween(String value1, String value2) {
+        public Criteria andTypeidNotBetween(Integer value1, Integer value2) {
             addCriterion("typeid not between", value1, value2, "typeid");
             return (Criteria) this;
         }

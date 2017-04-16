@@ -178,6 +178,4 @@
       adminpassword = #{adminpassword,jdbcType=VARCHAR}
     where adminid = #{adminid,jdbcType=VARCHAR}
   </update>
-  
-   <!-- 在此处写自定义sql，方便管理 -->
 </mapper>

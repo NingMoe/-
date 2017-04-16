@@ -5,11 +5,11 @@ public class Productorder {
 
     private String userid;
 
-    private String pid;
+    private Integer pid;
 
     private Integer number;
 
-    private String storeid;
+    private Integer storeid;
 
     private String pname;
 
@@ -35,12 +35,12 @@ public class Productorder {
         this.userid = userid == null ? null : userid.trim();
     }
 
-    public String getPid() {
+    public Integer getPid() {
         return pid;
     }
 
-    public void setPid(String pid) {
-        this.pid = pid == null ? null : pid.trim();
+    public void setPid(Integer pid) {
+        this.pid = pid;
     }
 
     public Integer getNumber() {
@@ -51,12 +51,12 @@ public class Productorder {
         this.number = number;
     }
 
-    public String getStoreid() {
+    public Integer getStoreid() {
         return storeid;
     }
 
-    public void setStoreid(String storeid) {
-        this.storeid = storeid == null ? null : storeid.trim();
+    public void setStoreid(Integer storeid) {
+        this.storeid = storeid;
     }
 
     public String getPname() {

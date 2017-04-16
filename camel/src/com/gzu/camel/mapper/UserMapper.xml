@@ -255,8 +255,4 @@
       umoney = #{umoney,jdbcType=DOUBLE}
     where userid = #{userid,jdbcType=VARCHAR}
   </update>
-  
-  
-  
-   <!-- 在此处写自定义sql，方便管理 -->
 </mapper>

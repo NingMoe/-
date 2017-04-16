@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.gzu.camel.mapper.ProductstoreMapper" >
   <resultMap id="BaseResultMap" type="com.gzu.camel.pojo.ProductstoreKey" >
-    <id column="pid" property="pid" jdbcType="VARCHAR" />
-    <id column="storeid" property="storeid" jdbcType="VARCHAR" />
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <id column="storeid" property="storeid" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -82,8 +82,8 @@
   </select>
   <delete id="deleteByPrimaryKey" parameterType="com.gzu.camel.pojo.ProductstoreKey" >
     delete from productstore
-    where pid = #{pid,jdbcType=VARCHAR}
-      and storeid = #{storeid,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
+      and storeid = #{storeid,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.gzu.camel.pojo.ProductstoreExample" >
     delete from productstore
@@ -93,7 +93,7 @@
   </delete>
   <insert id="insert" parameterType="com.gzu.camel.pojo.ProductstoreKey" >
     insert into productstore (pid, storeid)
-    values (#{pid,jdbcType=VARCHAR}, #{storeid,jdbcType=VARCHAR})
+    values (#{pid,jdbcType=INTEGER}, #{storeid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.gzu.camel.pojo.ProductstoreKey" >
     insert into productstore
@@ -107,10 +107,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="pid != null" >
-        #{pid,jdbcType=VARCHAR},
+        #{pid,jdbcType=INTEGER},
       </if>
       <if test="storeid != null" >
-        #{storeid,jdbcType=VARCHAR},
+        #{storeid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -124,10 +124,10 @@
     update productstore
     <set >
       <if test="record.pid != null" >
-        pid = #{record.pid,jdbcType=VARCHAR},
+        pid = #{record.pid,jdbcType=INTEGER},
       </if>
       <if test="record.storeid != null" >
-        storeid = #{record.storeid,jdbcType=VARCHAR},
+        storeid = #{record.storeid,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -136,13 +136,10 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update productstore
-    set pid = #{record.pid,jdbcType=VARCHAR},
-      storeid = #{record.storeid,jdbcType=VARCHAR}
+    set pid = #{record.pid,jdbcType=INTEGER},
+      storeid = #{record.storeid,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  
-  
-   <!-- 在此处写自定义sql，方便管理 -->
 </mapper>

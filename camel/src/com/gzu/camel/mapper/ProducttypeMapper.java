@@ -10,7 +10,7 @@ public interface ProducttypeMapper {
 
     int deleteByExample(ProducttypeExample example);
 
-    int deleteByPrimaryKey(String typeid);
+    int deleteByPrimaryKey(Integer typeid);
 
     int insert(Producttype record);
 
@@ -18,7 +18,7 @@ public interface ProducttypeMapper {
 
     List<Producttype> selectByExample(ProducttypeExample example);
 
-    Producttype selectByPrimaryKey(String typeid);
+    Producttype selectByPrimaryKey(Integer typeid);
 
     int updateByExampleSelective(@Param("record") Producttype record, @Param("example") ProducttypeExample example);
 
@@ -27,7 +27,4 @@ public interface ProducttypeMapper {
     int updateByPrimaryKeySelective(Producttype record);
 
     int updateByPrimaryKey(Producttype record);
-    
-    
-    /*自己添加的方法，方便管理*/
 }

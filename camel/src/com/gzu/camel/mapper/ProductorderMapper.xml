@@ -4,9 +4,9 @@
   <resultMap id="BaseResultMap" type="com.gzu.camel.pojo.Productorder" >
     <id column="orderid" property="orderid" jdbcType="INTEGER" />
     <result column="userid" property="userid" jdbcType="VARCHAR" />
-    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
     <result column="number" property="number" jdbcType="INTEGER" />
-    <result column="storeid" property="storeid" jdbcType="VARCHAR" />
+    <result column="storeid" property="storeid" jdbcType="INTEGER" />
     <result column="pname" property="pname" jdbcType="VARCHAR" />
     <result column="uphone" property="uphone" jdbcType="VARCHAR" />
     <result column="uaddr" property="uaddr" jdbcType="VARCHAR" />
@@ -108,8 +108,8 @@
       number, storeid, pname, 
       uphone, uaddr, total
       )
-    values (#{orderid,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, 
-      #{number,jdbcType=INTEGER}, #{storeid,jdbcType=VARCHAR}, #{pname,jdbcType=VARCHAR}, 
+    values (#{orderid,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, 
+      #{number,jdbcType=INTEGER}, #{storeid,jdbcType=INTEGER}, #{pname,jdbcType=VARCHAR}, 
       #{uphone,jdbcType=VARCHAR}, #{uaddr,jdbcType=VARCHAR}, #{total,jdbcType=DOUBLE}
       )
   </insert>
@@ -152,13 +152,13 @@
         #{userid,jdbcType=VARCHAR},
       </if>
       <if test="pid != null" >
-        #{pid,jdbcType=VARCHAR},
+        #{pid,jdbcType=INTEGER},
       </if>
       <if test="number != null" >
         #{number,jdbcType=INTEGER},
       </if>
       <if test="storeid != null" >
-        #{storeid,jdbcType=VARCHAR},
+        #{storeid,jdbcType=INTEGER},
       </if>
       <if test="pname != null" >
         #{pname,jdbcType=VARCHAR},
@@ -190,13 +190,13 @@
         userid = #{record.userid,jdbcType=VARCHAR},
       </if>
       <if test="record.pid != null" >
-        pid = #{record.pid,jdbcType=VARCHAR},
+        pid = #{record.pid,jdbcType=INTEGER},
       </if>
       <if test="record.number != null" >
         number = #{record.number,jdbcType=INTEGER},
       </if>
       <if test="record.storeid != null" >
-        storeid = #{record.storeid,jdbcType=VARCHAR},
+        storeid = #{record.storeid,jdbcType=INTEGER},
       </if>
       <if test="record.pname != null" >
         pname = #{record.pname,jdbcType=VARCHAR},
@@ -219,9 +219,9 @@
     update productorder
     set orderid = #{record.orderid,jdbcType=INTEGER},
       userid = #{record.userid,jdbcType=VARCHAR},
-      pid = #{record.pid,jdbcType=VARCHAR},
+      pid = #{record.pid,jdbcType=INTEGER},
       number = #{record.number,jdbcType=INTEGER},
-      storeid = #{record.storeid,jdbcType=VARCHAR},
+      storeid = #{record.storeid,jdbcType=INTEGER},
       pname = #{record.pname,jdbcType=VARCHAR},
       uphone = #{record.uphone,jdbcType=VARCHAR},
       uaddr = #{record.uaddr,jdbcType=VARCHAR},
@@ -237,13 +237,13 @@
         userid = #{userid,jdbcType=VARCHAR},
       </if>
       <if test="pid != null" >
-        pid = #{pid,jdbcType=VARCHAR},
+        pid = #{pid,jdbcType=INTEGER},
       </if>
       <if test="number != null" >
         number = #{number,jdbcType=INTEGER},
       </if>
       <if test="storeid != null" >
-        storeid = #{storeid,jdbcType=VARCHAR},
+        storeid = #{storeid,jdbcType=INTEGER},
       </if>
       <if test="pname != null" >
         pname = #{pname,jdbcType=VARCHAR},
@@ -263,16 +263,13 @@
   <update id="updateByPrimaryKey" parameterType="com.gzu.camel.pojo.Productorder" >
     update productorder
     set userid = #{userid,jdbcType=VARCHAR},
-      pid = #{pid,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=INTEGER},
       number = #{number,jdbcType=INTEGER},
-      storeid = #{storeid,jdbcType=VARCHAR},
+      storeid = #{storeid,jdbcType=INTEGER},
       pname = #{pname,jdbcType=VARCHAR},
       uphone = #{uphone,jdbcType=VARCHAR},
       uaddr = #{uaddr,jdbcType=VARCHAR},
       total = #{total,jdbcType=DOUBLE}
     where orderid = #{orderid,jdbcType=INTEGER}
   </update>
-  
-  
-   <!-- 在此处写自定义sql，方便管理 -->
 </mapper>

@@ -114,62 +114,52 @@ public class StoreExample {
             return (Criteria) this;
         }
 
-        public Criteria andStoreidEqualTo(String value) {
+        public Criteria andStoreidEqualTo(Integer value) {
             addCriterion("storeid =", value, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidNotEqualTo(String value) {
+        public Criteria andStoreidNotEqualTo(Integer value) {
             addCriterion("storeid <>", value, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidGreaterThan(String value) {
+        public Criteria andStoreidGreaterThan(Integer value) {
             addCriterion("storeid >", value, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidGreaterThanOrEqualTo(String value) {
+        public Criteria andStoreidGreaterThanOrEqualTo(Integer value) {
             addCriterion("storeid >=", value, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidLessThan(String value) {
+        public Criteria andStoreidLessThan(Integer value) {
             addCriterion("storeid <", value, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidLessThanOrEqualTo(String value) {
+        public Criteria andStoreidLessThanOrEqualTo(Integer value) {
             addCriterion("storeid <=", value, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidLike(String value) {
-            addCriterion("storeid like", value, "storeid");
-            return (Criteria) this;
-        }
-
-        public Criteria andStoreidNotLike(String value) {
-            addCriterion("storeid not like", value, "storeid");
-            return (Criteria) this;
-        }
-
-        public Criteria andStoreidIn(List<String> values) {
+        public Criteria andStoreidIn(List<Integer> values) {
             addCriterion("storeid in", values, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidNotIn(List<String> values) {
+        public Criteria andStoreidNotIn(List<Integer> values) {
             addCriterion("storeid not in", values, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidBetween(String value1, String value2) {
+        public Criteria andStoreidBetween(Integer value1, Integer value2) {
             addCriterion("storeid between", value1, value2, "storeid");
             return (Criteria) this;
         }
 
-        public Criteria andStoreidNotBetween(String value1, String value2) {
+        public Criteria andStoreidNotBetween(Integer value1, Integer value2) {
             addCriterion("storeid not between", value1, value2, "storeid");
             return (Criteria) this;
         }

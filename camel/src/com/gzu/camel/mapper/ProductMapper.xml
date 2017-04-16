@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.gzu.camel.mapper.ProductMapper" >
   <resultMap id="BaseResultMap" type="com.gzu.camel.pojo.Product" >
-    <id column="pid" property="pid" jdbcType="VARCHAR" />
-    <result column="storeid" property="storeid" jdbcType="VARCHAR" />
-    <result column="typeid" property="typeid" jdbcType="VARCHAR" />
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="storeid" property="storeid" jdbcType="INTEGER" />
+    <result column="typeid" property="typeid" jdbcType="INTEGER" />
     <result column="pname" property="pname" jdbcType="VARCHAR" />
     <result column="pprice" property="pprice" jdbcType="DOUBLE" />
     <result column="pdes" property="pdes" jdbcType="VARCHAR" />
@@ -86,15 +86,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from product
-    where pid = #{pid,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from product
-    where pid = #{pid,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.gzu.camel.pojo.ProductExample" >
     delete from product
@@ -106,7 +106,7 @@
     insert into product (pid, storeid, typeid, 
       pname, pprice, pdes, 
       pno, pimageno)
-    values (#{pid,jdbcType=VARCHAR}, #{storeid,jdbcType=VARCHAR}, #{typeid,jdbcType=VARCHAR}, 
+    values (#{pid,jdbcType=INTEGER}, #{storeid,jdbcType=INTEGER}, #{typeid,jdbcType=INTEGER}, 
       #{pname,jdbcType=VARCHAR}, #{pprice,jdbcType=DOUBLE}, #{pdes,jdbcType=VARCHAR}, 
       #{pno,jdbcType=INTEGER}, #{pimageno,jdbcType=INTEGER})
   </insert>
@@ -140,13 +140,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="pid != null" >
-        #{pid,jdbcType=VARCHAR},
+        #{pid,jdbcType=INTEGER},
       </if>
       <if test="storeid != null" >
-        #{storeid,jdbcType=VARCHAR},
+        #{storeid,jdbcType=INTEGER},
       </if>
       <if test="typeid != null" >
-        #{typeid,jdbcType=VARCHAR},
+        #{typeid,jdbcType=INTEGER},
       </if>
       <if test="pname != null" >
         #{pname,jdbcType=VARCHAR},
@@ -171,19 +171,17 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  
-  
   <update id="updateByExampleSelective" parameterType="map" >
     update product
     <set >
       <if test="record.pid != null" >
-        pid = #{record.pid,jdbcType=VARCHAR},
+        pid = #{record.pid,jdbcType=INTEGER},
       </if>
       <if test="record.storeid != null" >
-        storeid = #{record.storeid,jdbcType=VARCHAR},
+        storeid = #{record.storeid,jdbcType=INTEGER},
       </if>
       <if test="record.typeid != null" >
-        typeid = #{record.typeid,jdbcType=VARCHAR},
+        typeid = #{record.typeid,jdbcType=INTEGER},
       </if>
       <if test="record.pname != null" >
         pname = #{record.pname,jdbcType=VARCHAR},
@@ -207,9 +205,9 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update product
-    set pid = #{record.pid,jdbcType=VARCHAR},
-      storeid = #{record.storeid,jdbcType=VARCHAR},
-      typeid = #{record.typeid,jdbcType=VARCHAR},
+    set pid = #{record.pid,jdbcType=INTEGER},
+      storeid = #{record.storeid,jdbcType=INTEGER},
+      typeid = #{record.typeid,jdbcType=INTEGER},
       pname = #{record.pname,jdbcType=VARCHAR},
       pprice = #{record.pprice,jdbcType=DOUBLE},
       pdes = #{record.pdes,jdbcType=VARCHAR},
@@ -223,10 +221,10 @@
     update product
     <set >
       <if test="storeid != null" >
-        storeid = #{storeid,jdbcType=VARCHAR},
+        storeid = #{storeid,jdbcType=INTEGER},
       </if>
       <if test="typeid != null" >
-        typeid = #{typeid,jdbcType=VARCHAR},
+        typeid = #{typeid,jdbcType=INTEGER},
       </if>
       <if test="pname != null" >
         pname = #{pname,jdbcType=VARCHAR},
@@ -244,27 +242,42 @@
         pimageno = #{pimageno,jdbcType=INTEGER},
       </if>
     </set>
-    where pid = #{pid,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gzu.camel.pojo.Product" >
     update product
-    set storeid = #{storeid,jdbcType=VARCHAR},
-      typeid = #{typeid,jdbcType=VARCHAR},
+    set storeid = #{storeid,jdbcType=INTEGER},
+      typeid = #{typeid,jdbcType=INTEGER},
       pname = #{pname,jdbcType=VARCHAR},
       pprice = #{pprice,jdbcType=DOUBLE},
       pdes = #{pdes,jdbcType=VARCHAR},
       pno = #{pno,jdbcType=INTEGER},
       pimageno = #{pimageno,jdbcType=INTEGER}
-    where pid = #{pid,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
   </update>
   
   
-  <!-- 在此处写自定义sql，方便管理 -->
+  
+   <!-- 在此处写自定义sql，方便管理 -->
   
   <select id="countByProductName" parameterType="String" resultType="Integer">
   	select count(*) from product where pname like '%${value}%'
   </select>
   
   
-  
+  <select id="selectSplitPage" parameterType="ProductSplitPageVo" resultType="product">
+   <!-- SELECT product.pid,store.sname FROM product,store WHERE product.storeid=store.storeid AND typeid=1 AND pname LIKE '%${ProductCustom。pname}%' LIMIT 1,1 -->
+	   SELECT * FROM product
+	   <where>
+	   		<!--<if test="productCustom.typeid !=null">
+	   			AND typeid= #{productCustom.typeid}
+	   		</if>
+	   		 <if test="productCustom.pname !=null">
+	   			AND pname LIKE '%${productCustom。pname}%'
+	   		</if> 
+	   		<if test="productCustom.currentPage !=null || productCustom.pageSize !=null">
+	   			LIMIT #{productCustom.currentPage},#{productCustom.pageSize}
+	   		</if> -->
+	   </where>
+  </select>
 </mapper>

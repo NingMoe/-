@@ -27,7 +27,4 @@ public interface ShopingcarMapper {
     int updateByPrimaryKeySelective(Shopingcar record);
 
     int updateByPrimaryKey(Shopingcar record);
-    
-    
-    /*自己添加的方法，方便管理*/
 }

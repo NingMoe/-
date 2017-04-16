@@ -1,15 +1,21 @@
 package com.gzu.camel.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gzu.camel.mapper.ProductMapper;
+import com.gzu.camel.pojo.Product;
+import com.gzu.camel.pojo.ProductSplitPageVo;
 import com.gzu.camel.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductMapper productMapper;
+	 
 
 	/**
 	 * @author asus
@@ -21,6 +27,13 @@ public class ProductServiceImpl implements ProductService {
 	public int countByProductName(String name) throws Exception {
 		int x=productMapper.countByProductName(name);
 		return x;
+	}
+
+	@Override
+	public List<Product> splitPage(ProductSplitPageVo productSplitPageVo) throws Exception {
+		List<Product> allProduct=new ArrayList<Product>();
+		allProduct=productMapper.selectSplitPage(productSplitPageVo);
+		return allProduct;
 	}
 
 }

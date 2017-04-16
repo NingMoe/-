@@ -21,7 +21,4 @@ public interface ProductstoreMapper {
     int updateByExampleSelective(@Param("record") ProductstoreKey record, @Param("example") ProductstoreExample example);
 
     int updateByExample(@Param("record") ProductstoreKey record, @Param("example") ProductstoreExample example);
-    
-    
-    /*自己添加的方法，方便管理*/
 }

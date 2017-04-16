@@ -1,23 +1,23 @@
 package com.gzu.camel.pojo;
 
 public class ProductstoreKey {
-    private String pid;
+    private Integer pid;
 
-    private String storeid;
+    private Integer storeid;
 
-    public String getPid() {
+    public Integer getPid() {
         return pid;
     }
 
-    public void setPid(String pid) {
-        this.pid = pid == null ? null : pid.trim();
+    public void setPid(Integer pid) {
+        this.pid = pid;
     }
 
-    public String getStoreid() {
+    public Integer getStoreid() {
         return storeid;
     }
 
-    public void setStoreid(String storeid) {
-        this.storeid = storeid == null ? null : storeid.trim();
+    public void setStoreid(Integer storeid) {
+        this.storeid = storeid;
     }
 }

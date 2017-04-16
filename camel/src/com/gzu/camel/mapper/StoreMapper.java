@@ -2,6 +2,7 @@ package com.gzu.camel.mapper;
 
 import com.gzu.camel.pojo.Store;
 import com.gzu.camel.pojo.StoreExample;
+import com.gzu.camel.pojo.StoreKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,7 +11,7 @@ public interface StoreMapper {
 
     int deleteByExample(StoreExample example);
 
-    int deleteByPrimaryKey(String storeid);
+    int deleteByPrimaryKey(StoreKey key);
 
     int insert(Store record);
 
@@ -18,7 +19,7 @@ public interface StoreMapper {
 
     List<Store> selectByExample(StoreExample example);
 
-    Store selectByPrimaryKey(String storeid);
+    Store selectByPrimaryKey(StoreKey key);
 
     int updateByExampleSelective(@Param("record") Store record, @Param("example") StoreExample example);
 
@@ -27,7 +28,4 @@ public interface StoreMapper {
     int updateByPrimaryKeySelective(Store record);
 
     int updateByPrimaryKey(Store record);
-    
-    
-    /*自己添加的方法，方便管理*/
 }
