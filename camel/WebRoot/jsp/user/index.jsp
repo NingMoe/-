@@ -9,7 +9,7 @@
 </head>
 <body>
 <form action="${pageContext.request.contextPath }/product/splitPage.action" name="from1">
-<table>
+<%-- <table>這裡面為測試代碼  可以刪掉，這個頁面為駱駝商城主頁
 <c:forEach var="allProduct" items="${ allProduct}">  
 <tr>  
     <td>${ allProduct.pid}</td>  
@@ -31,7 +31,7 @@
 </tr>  
 </c:forEach>
 </table> 
-
+ --%>
 </form>
 </body>
 </html>
