@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.gzu.camel.mapper.ProductMapper;
 import com.gzu.camel.mapper.ProducttypeMapper;
 import com.gzu.camel.pojo.Product;
+import com.gzu.camel.pojo.ProductCustom;
 import com.gzu.camel.pojo.ProductSplitPageVo;
 import com.gzu.camel.pojo.ProducttypeCustom;
 import com.gzu.camel.service.ProductService;
@@ -45,6 +46,11 @@ public class ProductServiceImpl implements ProductService {
 		List<ProducttypeCustom> allType=new ArrayList<ProducttypeCustom>();
 		allType=producttypeMapper.selectproducttype();
 		return allType;
+	}
+
+	@Override
+	public ProductCustom queryProductDetails(int pid) throws Exception {
+		return productMapper.selectProductDetails(pid);
 	}
 
 }

@@ -281,5 +281,9 @@
 	   		</if>
   </select>
   
+<!-- 商品詳情 -->
 
+<select id="selectProductDetails" parameterType="String" resultType="productCustom">
+select store.sname,product.pname,product.pprice,product.pdes,product.pno,product.pimageno from product,store where product.storeid=store.storeid
+</select>
 </mapper>

@@ -62,4 +62,13 @@ public class ProductControl {
 		return "user/index";
 	}
 	
+	//商品詳情頁
+	@RequestMapping(value="details",method={RequestMethod.GET})
+	public String productDetails(Integer pid,Model model) throws Exception{
+		ProductCustom productDetails=productService.queryProductDetails(pid);
+		model.addAttribute("productDetails", productDetails);
+		return "";
+	}
+	
+	
 }
