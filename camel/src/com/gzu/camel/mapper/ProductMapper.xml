@@ -259,25 +259,27 @@
   
   
    <!-- 在此处写自定义sql，方便管理 -->
-  
+  	
   <select id="countByProductName" parameterType="String" resultType="Integer">
   	select count(*) from product where pname like '%${value}%'
   </select>
   
-  
-  <select id="selectSplitPage" parameterType="ProductSplitPageVo" resultType="product">
-   <!-- SELECT product.pid,store.sname FROM product,store WHERE product.storeid=store.storeid AND typeid=1 AND pname LIKE '%${ProductCustom。pname}%' LIMIT 1,1 -->
-	   SELECT * FROM product
-	   <where>
-	   		<!--<if test="productCustom.typeid !=null">
-	   			AND typeid= #{productCustom.typeid}
+<!--   分頁 -->
+  <select id="selectSplitPage" parameterType="productSplitPageVo" resultType="product">
+   <!-- SELECT product.pid,store.sname FROM product,store WHERE product.storeid=store.storeid 
+			   AND product.typeid=1 
+			   AND product.pname LIKE '%${ProductCustom。pname}%' LIMIT 1,1 -->
+	    SELECT * FROM product,store WHERE product.storeid=store.storeid
+	   		<if test="productCustom.typeid !=null">
+	   			AND product.typeid= #{productCustom.typeid}
 	   		</if>
 	   		 <if test="productCustom.pname !=null">
-	   			AND pname LIKE '%${productCustom。pname}%'
+	   			AND product.pname LIKE '%${productCustom.pname}%'
 	   		</if> 
-	   		<if test="productCustom.currentPage !=null || productCustom.pageSize !=null">
-	   			LIMIT #{productCustom.currentPage},#{productCustom.pageSize}
-	   		</if> -->
-	   </where>
+	   		<if test="productCustom.start !=null || productCustom.pageSize !=null">
+	   			LIMIT #{productCustom.start},#{productCustom.pageSize}
+	   		</if>
   </select>
+  
+
 </mapper>

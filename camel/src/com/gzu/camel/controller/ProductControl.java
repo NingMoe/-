@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.gzu.camel.pojo.Product;
 import com.gzu.camel.pojo.ProductCustom;
 import com.gzu.camel.pojo.ProductSplitPageVo;
+import com.gzu.camel.pojo.ProducttypeCustom;
 import com.gzu.camel.service.ProductService;
 
 @Controller
@@ -33,19 +34,32 @@ public class ProductControl {
 		model.addAttribute("count", count);
 		return "user/index";
 	}
-	@RequestMapping(value="/splitPage",method={RequestMethod.GET})
-	public String splitPage(Model model) throws Exception{
-		ProductSplitPageVo productSplitPageVo=new ProductSplitPageVo();
-		ProductCustom productCustom=new ProductCustom();
-		productCustom.setCurrentPage(1);
-		productCustom.setPageSize(1);
-		productCustom.setPname("");
-		productCustom.setTypeid(1);
-		
-		productSplitPageVo.setProductCustom(productCustom);
+	
+	//首頁
+	@RequestMapping(value="/index",method={RequestMethod.GET})
+	public String index(Model model,ProductSplitPageVo pageVo) throws Exception{
 		List<Product> allProduct=new ArrayList<Product>();
-		allProduct=productService.splitPage(productSplitPageVo);
+		List<ProducttypeCustom> allType=new ArrayList<ProducttypeCustom>();
+		//為首次進入頁面設置默認值
+		if(pageVo.getProductCustom()==null){
+			ProductCustom productCustom=new ProductCustom();
+			productCustom.setStart(0);
+			productCustom.setPageSize(13);
+			productCustom.setPname("");
+			productCustom.setTypeid(null);
+			pageVo.setProductCustom(productCustom);
+		}else{
+			//設置開始查詢的位置
+			int start=(pageVo.getProductCustom().getCurrentPage()-1)*pageVo.getProductCustom().getPageSize();
+			pageVo.getProductCustom().setStart(start);
+		}
+			//分頁功能
+			allProduct=productService.splitPage(pageVo);
+			allType=productService.queryProductType();
+			
 		model.addAttribute("allProduct", allProduct);
+		model.addAttribute("allType", allType);
 		return "user/index";
 	}
+	
 }

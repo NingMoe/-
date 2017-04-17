@@ -161,4 +161,10 @@
     set typename = #{typename,jdbcType=VARCHAR}
     where typeid = #{typeid,jdbcType=INTEGER}
   </update>
+  
+  
+  <!--  查詢商品的所有分類 -->
+  <select id="selectproducttype"  resultType="producttypeCustom">
+  select * from producttype
+  </select>
 </mapper>

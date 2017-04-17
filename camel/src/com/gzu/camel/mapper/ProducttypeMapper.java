@@ -2,6 +2,8 @@ package com.gzu.camel.mapper;
 
 import com.gzu.camel.pojo.Producttype;
 import com.gzu.camel.pojo.ProducttypeExample;
+import com.gzu.camel.pojo.ProducttypeCustom;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +29,8 @@ public interface ProducttypeMapper {
     int updateByPrimaryKeySelective(Producttype record);
 
     int updateByPrimaryKey(Producttype record);
+    
+    
+    //查詢商品分類
+    List<ProducttypeCustom> selectproducttype() throws Exception;
 }

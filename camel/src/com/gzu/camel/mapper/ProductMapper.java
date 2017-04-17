@@ -3,6 +3,7 @@ package com.gzu.camel.mapper;
 import com.gzu.camel.pojo.Product;
 import com.gzu.camel.pojo.ProductExample;
 import com.gzu.camel.pojo.ProductSplitPageVo;
+import com.gzu.camel.pojo.ProducttypeCustom;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -41,5 +42,7 @@ public interface ProductMapper {
    
    //商品分页
    List<Product> selectSplitPage(ProductSplitPageVo productSplitPageVo);
+   
+
    
 }

@@ -7,15 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gzu.camel.mapper.ProductMapper;
+import com.gzu.camel.mapper.ProducttypeMapper;
 import com.gzu.camel.pojo.Product;
 import com.gzu.camel.pojo.ProductSplitPageVo;
+import com.gzu.camel.pojo.ProducttypeCustom;
 import com.gzu.camel.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductMapper productMapper;
-	 
+	
+	@Autowired
+	private ProducttypeMapper producttypeMapper;
 
 	/**
 	 * @author asus
@@ -34,6 +38,13 @@ public class ProductServiceImpl implements ProductService {
 		List<Product> allProduct=new ArrayList<Product>();
 		allProduct=productMapper.selectSplitPage(productSplitPageVo);
 		return allProduct;
+	}
+
+	@Override
+	public List<ProducttypeCustom> queryProductType() throws Exception {
+		List<ProducttypeCustom> allType=new ArrayList<ProducttypeCustom>();
+		allType=producttypeMapper.selectproducttype();
+		return allType;
 	}
 
 }
