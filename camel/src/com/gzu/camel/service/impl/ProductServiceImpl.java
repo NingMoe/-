@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.gzu.camel.mapper.ProductMapper;
 import com.gzu.camel.mapper.ProducttypeMapper;
+import com.gzu.camel.mapper.ShopingcarMapper;
 import com.gzu.camel.pojo.Product;
 import com.gzu.camel.pojo.ProductCustom;
 import com.gzu.camel.pojo.ProductSplitPageVo;
 import com.gzu.camel.pojo.ProducttypeCustom;
+import com.gzu.camel.pojo.ShopingcarCustom;
 import com.gzu.camel.service.ProductService;
 
 @Service
@@ -21,6 +23,9 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
 	private ProducttypeMapper producttypeMapper;
+	
+	@Autowired
+	private ShopingcarMapper shopingcarMapper;
 
 	/**
 	 * @author asus
@@ -30,8 +35,7 @@ public class ProductServiceImpl implements ProductService {
 	 */
 	@Override
 	public int countByProductName(String name) throws Exception {
-		int x=productMapper.countByProductName(name);
-		return x;
+		return productMapper.countByProductName(name);
 	}
 
 	@Override
@@ -43,14 +47,27 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ProducttypeCustom> queryProductType() throws Exception {
-		List<ProducttypeCustom> allType=new ArrayList<ProducttypeCustom>();
-		allType=producttypeMapper.selectproducttype();
-		return allType;
+		return producttypeMapper.selectproducttype();
 	}
 
 	@Override
 	public ProductCustom queryProductDetails(int pid) throws Exception {
 		return productMapper.selectProductDetails(pid);
+	}
+
+	@Override
+	public void addToCart(ShopingcarCustom shopingcarCustom) throws Exception {
+		shopingcarMapper.insert(shopingcarCustom);
+	}
+
+	@Override
+	public List<ShopingcarCustom> queryCar(String userid) throws Exception {
+		return shopingcarMapper.selectByUserid(userid);
+	}
+
+	@Override
+	public void deleteProduct(ShopingcarCustom spCustom) throws Exception {
+		shopingcarMapper.deleteByPrimaryKey(spCustom);
 	}
 
 }

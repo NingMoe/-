@@ -3,16 +3,20 @@ package com.gzu.camel.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.gzu.camel.pojo.Product;
 import com.gzu.camel.pojo.ProductCustom;
 import com.gzu.camel.pojo.ProductSplitPageVo;
 import com.gzu.camel.pojo.ProducttypeCustom;
+import com.gzu.camel.pojo.ShopingcarCustom;
 import com.gzu.camel.service.ProductService;
 
 @Controller
@@ -67,7 +71,61 @@ public class ProductControl {
 	public String productDetails(Integer pid,Model model) throws Exception{
 		ProductCustom productDetails=productService.queryProductDetails(pid);
 		model.addAttribute("productDetails", productDetails);
-		return "";
+		return "user/product/product_info";
+	}
+	//获取登陆用户的ID
+	public String queryUserid(HttpServletRequest request){
+		return (String) request.getSession().getAttribute("userid");
+	}
+	//加入购物车
+	@RequestMapping(value="addToCart",method={RequestMethod.GET})
+	public String addToCart(Model model,Integer pid,HttpServletRequest request)throws Exception{
+		String userid=queryUserid(request);
+		if(userid==null){
+			request.setAttribute("errorMsg","用户未登陆");
+			//返回登录页
+			return "";
+		}else{
+			
+			ShopingcarCustom spCustom=new ShopingcarCustom();
+			spCustom.setPid(pid);
+			spCustom.setUserid(userid);
+			spCustom.setNumber(1);
+			//加入购物车
+			productService.addToCart(spCustom);
+			return "forward:/product/showCar.action";
+		}
+		
+	}
+	
+	//显示购物车商品信息
+	@RequestMapping(value="showCar")
+	public String showCar(Model model,HttpServletRequest request) throws Exception{
+		String userid=queryUserid(request);
+		List<ShopingcarCustom> allCarProduct=new ArrayList<ShopingcarCustom>();
+		if(userid==null){
+			request.setAttribute("errorMsg","用户未登陆");
+			//返回登录页
+			return "";
+			}else{
+				//查询购物车里的信息
+				allCarProduct=productService.queryCar(userid);
+				model.addAttribute("allCarProduct", allCarProduct);
+				return "user/car/car";
+				
+			}
+		
+	}
+	
+	//修改购物车信息
+	@RequestMapping(value="/DeleteProduct",method={RequestMethod.GET})
+	public String DeleteProduct(Integer pid,HttpServletRequest request) throws Exception{
+		String userid=(String)queryUserid(request);
+		ShopingcarCustom sCustom=new ShopingcarCustom(); 
+		sCustom.setPid(pid);
+		sCustom.setUserid(userid);
+		productService.deleteProduct(sCustom);
+		return "forward:/product/showCar.action";
 	}
 	
 	

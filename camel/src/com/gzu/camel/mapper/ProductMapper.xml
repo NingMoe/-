@@ -283,7 +283,7 @@
   
 <!-- 商品詳情 -->
 
-<select id="selectProductDetails" parameterType="String" resultType="productCustom">
-select store.sname,product.pname,product.pprice,product.pdes,product.pno,product.pimageno from product,store where product.storeid=store.storeid
+<select id="selectProductDetails" parameterType="int" resultType="productCustom">
+select store.sname,product.pid,product.pname,product.pprice,product.pdes,product.pno,product.pimageno from product,store where product.storeid=store.storeid AND product.pid=#{pid}
 </select>
 </mapper>

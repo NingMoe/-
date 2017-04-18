@@ -8,11 +8,15 @@
 <title>商品主页</title>
 </head>
 <body>
+<%
+session.setAttribute("userid", "10010");
+ %>
 <form action="${pageContext.request.contextPath }/product/splitPage.action" name="from1">
-<%-- <table><!-- 這裡面為測試代碼  可以刪掉，這個頁面為駱駝商城主頁 -->
+<table><!-- 這裡面為測試代碼  可以刪掉，這個頁面為駱駝商城主頁 -->
+
 <c:forEach var="allProduct" items="${ allProduct}">  
 <tr>  
-    <td>${ allProduct.pid}</td>  
+    <td><a href="${pageContext.request.contextPath }/product/details.action?pid=${ allProduct.pid}">${ allProduct.pid}</a></td>  
     <td>${ allProduct.storeid}</td>
 	<td>${ allProduct.typeid}</td>  
 	<td>${ allProduct.pname}</td>  
@@ -30,8 +34,9 @@
     <td>${ allType.typename}</td>
 </tr>  
 </c:forEach>
-</table>  --%>
+</table> 
 
 </form>
+<a href="${pageContext.request.contextPath }/product/showCar.action">购物车</a>
 </body>
 </html>

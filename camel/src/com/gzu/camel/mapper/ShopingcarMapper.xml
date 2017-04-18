@@ -81,15 +81,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from shopingcar
-    where userid = #{userid,jdbcType=VARCHAR}
+  <select id="selectByUserid" resultType="ShopingcarCustom" parameterType="java.lang.String" >
+    select * from shopingcar where userid = #{userid,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <!-- 删除购物车商品 -->
+  <delete id="deleteByPrimaryKey" parameterType="ShopingcarCustom" >
     delete from shopingcar
-    where userid = #{userid,jdbcType=VARCHAR}
+    where userid = #{userid,jdbcType=VARCHAR} AND pid= #{pid,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.gzu.camel.pojo.ShopingcarExample" >
     delete from shopingcar
@@ -97,7 +95,8 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.gzu.camel.pojo.Shopingcar" >
+<!--   加入购物车 -->
+  <insert id="insert" parameterType="shopingcarCustom" >
     insert into shopingcar (userid, pid, number
       )
     values (#{userid,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}

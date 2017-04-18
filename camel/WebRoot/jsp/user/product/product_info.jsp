@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>商品详情</title>
 </head>
 <body>
-
+<!-- 一下为商品详情测试代码 不需要可以自行删除 -->
+${productDetails.pid }
+${productDetails.pname }
+${productDetails.sname }
+<a href="${pageContext.request.contextPath }/product/addToCart.action?pid=${productDetails.pid}">加入购物车</a>
 </body>
 </html>
