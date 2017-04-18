@@ -86,13 +86,16 @@ public class ProductControl {
 			//返回登录页
 			return "";
 		}else{
-			
 			ShopingcarCustom spCustom=new ShopingcarCustom();
 			spCustom.setPid(pid);
 			spCustom.setUserid(userid);
 			spCustom.setNumber(1);
-			//加入购物车
-			productService.addToCart(spCustom);
+			if(productService.queryCarByUPid(spCustom)==null){
+				
+				//加入购物车
+				productService.addToCart(spCustom);
+			}
+			
 			return "forward:/product/showCar.action";
 		}
 		

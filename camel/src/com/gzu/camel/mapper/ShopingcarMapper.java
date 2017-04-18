@@ -18,8 +18,10 @@ public interface ShopingcarMapper {
     int insertSelective(Shopingcar record);
 
     List<Shopingcar> selectByExample(ShopingcarExample example);
-
+//根据用户id查询购物车
     List<ShopingcarCustom> selectByUserid(String userid);
+    //根据用户id和pid查询购物车
+    ShopingcarCustom selectByUPid(ShopingcarCustom record);
 
     int updateByExampleSelective(@Param("record") Shopingcar record, @Param("example") ShopingcarExample example);
 

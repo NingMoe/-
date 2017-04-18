@@ -70,4 +70,11 @@ public class ProductServiceImpl implements ProductService {
 		shopingcarMapper.deleteByPrimaryKey(spCustom);
 	}
 
+	@Override
+	public ShopingcarCustom queryCarByUPid(ShopingcarCustom spCustom)
+			throws Exception {
+		return shopingcarMapper.selectByUPid(spCustom);
+	}
+
+
 }

@@ -177,4 +177,8 @@
       number = #{number,jdbcType=INTEGER}
     where userid = #{userid,jdbcType=VARCHAR}
   </update>
+  
+  <select id="selectByUPid" parameterType="ShopingcarCustom" resultType="ShopingcarCustom">
+  	select * from shopingcar where userid=#{userid} AND pid=#{pid}
+  </select>
 </mapper>
