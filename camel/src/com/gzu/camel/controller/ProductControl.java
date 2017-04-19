@@ -79,21 +79,22 @@ public class ProductControl {
 	}
 	//加入购物车
 	@RequestMapping(value="addToCart",method={RequestMethod.GET})
-	public String addToCart(Model model,Integer pid,HttpServletRequest request)throws Exception{
+	public String addToCart(Model model,ProductCustom spCustom,HttpServletRequest request)throws Exception{
 		String userid=queryUserid(request);
 		if(userid==null){
 			request.setAttribute("errorMsg","用户未登陆");
 			//返回登录页
 			return "";
 		}else{
-			ShopingcarCustom spCustom=new ShopingcarCustom();
-			spCustom.setPid(pid);
-			spCustom.setUserid(userid);
-			spCustom.setNumber(1);
-			if(productService.queryCarByUPid(spCustom)==null){
+			ShopingcarCustom spShopingcarCustom=new ShopingcarCustom();
+			spShopingcarCustom.setPid(spCustom.getPid());
+			spShopingcarCustom.setUserid(userid);
+			spShopingcarCustom.setNumber(1);
+			spShopingcarCustom.setPname(spCustom.getPname());
+			if(productService.queryCarByUPid(spShopingcarCustom)==null){
 				
 				//加入购物车
-				productService.addToCart(spCustom);
+				productService.addToCart(spShopingcarCustom);
 			}
 			
 			return "forward:/product/showCar.action";
@@ -120,7 +121,7 @@ public class ProductControl {
 		
 	}
 	
-	//修改购物车信息
+	//删除购物车里面的商品
 	@RequestMapping(value="/DeleteProduct",method={RequestMethod.GET})
 	public String DeleteProduct(Integer pid,HttpServletRequest request) throws Exception{
 		String userid=(String)queryUserid(request);
@@ -130,6 +131,16 @@ public class ProductControl {
 		productService.deleteProduct(sCustom);
 		return "forward:/product/showCar.action";
 	}
-	
+	//修改购物车商品购买数量
+	@RequestMapping(value="/updateCar",method={RequestMethod.GET})
+	public String updateCar(ShopingcarCustom sCustom,HttpServletRequest request) throws Exception{
+		String userid=queryUserid(request);
+		ShopingcarCustom spCustom=new ShopingcarCustom(); 
+		spCustom.setUserid(userid);
+		spCustom.setPid(sCustom.getPid());
+		spCustom.setNumber(sCustom.getNumber());
+		productService.updateNum(spCustom);
+		return "forward:/product/showCar.action";
+	}
 	
 }

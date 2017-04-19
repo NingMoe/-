@@ -6,8 +6,18 @@ public class Shopingcar {
     private Integer pid;
 
     private Integer number;
+    
+    private String pname;
 
-    public String getUserid() {
+    public String getPname() {
+		return pname;
+	}
+
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+
+	public String getUserid() {
         return userid;
     }
 

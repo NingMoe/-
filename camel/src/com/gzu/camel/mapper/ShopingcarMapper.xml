@@ -97,9 +97,9 @@
   </delete>
 <!--   加入购物车 -->
   <insert id="insert" parameterType="shopingcarCustom" >
-    insert into shopingcar (userid, pid, number
+    insert into shopingcar (userid, pid, number,pname
       )
-    values (#{userid,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}
+    values (#{userid,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, #{number,jdbcType=INTEGER},#{pname,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.gzu.camel.pojo.Shopingcar" >
@@ -171,11 +171,10 @@
     </set>
     where userid = #{userid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.gzu.camel.pojo.Shopingcar" >
+  <update id="updateByPrimaryKey" parameterType="ShopingcarCustom" >
     update shopingcar
-    set pid = #{pid,jdbcType=INTEGER},
-      number = #{number,jdbcType=INTEGER}
-    where userid = #{userid,jdbcType=VARCHAR}
+    set  number = #{number,jdbcType=INTEGER}
+    where userid = #{userid,jdbcType=VARCHAR} AND pid=#{pid,jdbcType=VARCHAR}
   </update>
   
   <select id="selectByUPid" parameterType="ShopingcarCustom" resultType="ShopingcarCustom">

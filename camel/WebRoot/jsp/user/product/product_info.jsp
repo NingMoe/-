@@ -11,6 +11,7 @@
 ${productDetails.pid }
 ${productDetails.pname }
 ${productDetails.sname }
-<a href="${pageContext.request.contextPath }/product/addToCart.action?pid=${productDetails.pid}">加入购物车</a>
+<a href="${pageContext.request.contextPath }/product/addToCart.action?pid=${productDetails.pid}&pname=${productDetails.pname }">加入购物车</a>
+<%-- <a href="${pageContext.request.contextPath }/product/addToCart.action?spCustom=${productDetails}">加入购物车</a> --%>
 </body>
 </html>

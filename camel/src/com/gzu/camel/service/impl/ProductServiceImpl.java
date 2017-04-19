@@ -76,5 +76,10 @@ public class ProductServiceImpl implements ProductService {
 		return shopingcarMapper.selectByUPid(spCustom);
 	}
 
+	@Override
+	public void updateNum(ShopingcarCustom spCustom) throws Exception {
+		shopingcarMapper.updateByPrimaryKey(spCustom);
+	}
+
 
 }

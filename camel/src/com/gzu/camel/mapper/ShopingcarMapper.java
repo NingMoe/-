@@ -28,8 +28,8 @@ public interface ShopingcarMapper {
     int updateByExample(@Param("record") Shopingcar record, @Param("example") ShopingcarExample example);
 
     int updateByPrimaryKeySelective(Shopingcar record);
-
-    int updateByPrimaryKey(Shopingcar record);
+//根据id更新购物车
+    int updateByPrimaryKey(ShopingcarCustom record);
     
      
     

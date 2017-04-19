@@ -27,5 +27,7 @@ public interface ProductService {
 	public void deleteProduct(ShopingcarCustom spCustom)throws Exception;
 	//查询购物车
 	public ShopingcarCustom queryCarByUPid(ShopingcarCustom spCustom)throws Exception;
+	//更改购物车购买商品数量
+	public void updateNum(ShopingcarCustom spCustom)throws Exception;
 	
 }
