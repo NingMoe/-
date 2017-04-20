@@ -255,4 +255,10 @@
       umoney = #{umoney,jdbcType=DOUBLE}
     where userid = #{userid,jdbcType=VARCHAR}
   </update>
+  <!-- 查询所有用户 -->
+  <select id="selectAllUser" resultType="user">
+  SELECT * FROM user
+  </select>
+  
+  
 </mapper>
