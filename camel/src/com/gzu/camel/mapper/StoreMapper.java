@@ -3,6 +3,8 @@ package com.gzu.camel.mapper;
 import com.gzu.camel.pojo.Store;
 import com.gzu.camel.pojo.StoreExample;
 import com.gzu.camel.pojo.StoreKey;
+import com.gzu.camel.pojo.User;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -28,4 +30,10 @@ public interface StoreMapper {
     int updateByPrimaryKeySelective(Store record);
 
     int updateByPrimaryKey(Store record);
+    
+    List<Store> selectAllStore();
+    
+    List<Store> selectStore(Integer id);
+    
+    int deletByid(Integer id);
 }

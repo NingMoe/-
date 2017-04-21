@@ -259,6 +259,14 @@
   <select id="selectAllUser" resultType="user">
   SELECT * FROM user
   </select>
+  <!-- 查询单个用户信息 -->
+  <select id="selectUser" parameterType="java.lang.String" resultType="user">
+  select * from user where userid = #{uname,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据id查询是否存在 -->
+  <select id="selectid" parameterType="java.lang.String" resultType="java.lang.String">
+  select userid from user where userid = #{uname,jdbcType=VARCHAR}
+  </select>
   
   
 </mapper>

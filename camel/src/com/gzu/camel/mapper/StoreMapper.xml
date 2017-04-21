@@ -193,4 +193,16 @@
     where storeid = #{storeid,jdbcType=INTEGER}
       and userid = #{userid,jdbcType=VARCHAR}
   </update>
+  <!-- 查询所有用户 -->
+  <select id="selectAllStore" resultType="com.gzu.camel.pojo.Store">
+  select * FROM store
+  </select>
+  <!-- 查询单个用户信息 -->
+  <select id="selectStore" parameterType="java.lang.Integer" resultType="store">
+  select * from store where storeid = #{storeid,jdbcType=INTEGER}
+  </select>
+  <select id="deletByid" parameterType="java.lang.Integer">
+  delete from store
+  where storeid = #{storeid,jdbcType=INTEGER}
+  </select>
 </mapper>

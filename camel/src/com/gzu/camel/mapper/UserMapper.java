@@ -30,4 +30,8 @@ public interface UserMapper {
     
     List<User> selectAllUser();
     
+    List<User> selectUser(String id);
+    
+    String selectid(String id);
+    
 }
