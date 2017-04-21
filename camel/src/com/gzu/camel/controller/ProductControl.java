@@ -73,6 +73,8 @@ public class ProductControl {
 		model.addAttribute("productDetails", productDetails);
 		return "user/product/product_info";
 	}
+	
+	
 	//获取登陆用户的ID
 	public String queryUserid(HttpServletRequest request){
 		return (String) request.getSession().getAttribute("userid");
@@ -82,9 +84,10 @@ public class ProductControl {
 	public String addToCart(Model model,ProductCustom spCustom,HttpServletRequest request)throws Exception{
 		String userid=queryUserid(request);
 		if(userid==null){
-			request.setAttribute("errorMsg","用户未登陆");
-			//返回登录页
-			return "";
+			request.setAttribute("message","用户未登陆");
+			request.setAttribute("url","jsp/login_reg/login.jsp");
+			//返回信息跳转页
+			return "forward";
 		}else{
 			ShopingcarCustom spShopingcarCustom=new ShopingcarCustom();
 			spShopingcarCustom.setPid(spCustom.getPid());
@@ -108,9 +111,10 @@ public class ProductControl {
 		String userid=queryUserid(request);
 		List<ShopingcarCustom> allCarProduct=new ArrayList<ShopingcarCustom>();
 		if(userid==null){
-			request.setAttribute("errorMsg","用户未登陆");
-			//返回登录页
-			return "";
+			request.setAttribute("message","用户未登陆");
+			request.setAttribute("url","jsp/login_reg/login.jsp");
+			//返回信息跳转页
+			return "forward";
 			}else{
 				//查询购物车里的信息
 				allCarProduct=productService.queryCar(userid);
@@ -133,12 +137,12 @@ public class ProductControl {
 	}
 	//修改购物车商品购买数量
 	@RequestMapping(value="/updateCar",method={RequestMethod.GET})
-	public String updateCar(ShopingcarCustom sCustom,HttpServletRequest request) throws Exception{
+	public String updateCar(Integer pid,String number,HttpServletRequest request) throws Exception{
+		ShopingcarCustom spCustom =new ShopingcarCustom();
 		String userid=queryUserid(request);
-		ShopingcarCustom spCustom=new ShopingcarCustom(); 
 		spCustom.setUserid(userid);
-		spCustom.setPid(sCustom.getPid());
-		spCustom.setNumber(sCustom.getNumber());
+		spCustom.setPid(pid);
+		spCustom.setNumber(Integer.parseInt(number));
 		productService.updateNum(spCustom);
 		return "forward:/product/showCar.action";
 	}
