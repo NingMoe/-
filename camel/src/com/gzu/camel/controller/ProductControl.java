@@ -1,7 +1,9 @@
 package com.gzu.camel.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -40,7 +42,7 @@ public class ProductControl {
 	}
 	
 	//首頁
-	@RequestMapping(value="/index",method={RequestMethod.GET})
+	/*@RequestMapping(value="/index",method={RequestMethod.GET})
 	public String index(Model model,ProductSplitPageVo pageVo) throws Exception{
 		List<Product> allProduct=new ArrayList<Product>();
 		List<ProducttypeCustom> allType=new ArrayList<ProducttypeCustom>();
@@ -64,8 +66,29 @@ public class ProductControl {
 		model.addAttribute("allProduct", allProduct);
 		model.addAttribute("allType", allType);
 		return "user/index";
+	}*/
+	//商品首页
+	@RequestMapping(value="/index1",method={RequestMethod.GET})
+	public String index1(Model model) throws Exception{
+		Map<String,List<Product>> allProduct = new HashMap<String,List<Product>>();
+		allProduct=productService.queryProductIndex(6);
+		model.addAttribute("allProduct",allProduct);
+		return "user/index";
 	}
 	
+	//某类全部商品
+	@RequestMapping(value="/alllProductType",method={RequestMethod.GET})
+	public String alllProductType(Model model,Integer typeid) throws Exception{
+		List<Product> allProduct=new ArrayList<Product>();
+		/*ProductSplitPageVo pageVo=new ProductSplitPageVo();
+		ProductCustom p=new ProductCustom();
+		p.setTypeid(1);
+		pageVo.setProductCustom(p);*/
+		//allProduct=productService.splitPage(pageVo);
+		allProduct=productService.queryProductByTid(typeid);
+		model.addAttribute("allProduct", allProduct);
+		return "user/product/products";
+	}
 	//商品詳情頁
 	@RequestMapping(value="details",method={RequestMethod.GET})
 	public String productDetails(Integer pid,Model model) throws Exception{
@@ -84,8 +107,10 @@ public class ProductControl {
 	public String addToCart(Model model,ProductCustom spCustom,HttpServletRequest request)throws Exception{
 		String userid=queryUserid(request);
 		if(userid==null){
-			request.setAttribute("message","用户未登陆");
-			request.setAttribute("url","jsp/login_reg/login.jsp");
+			/*request.setAttribute("message","用户未登陆");
+			request.setAttribute("url","jsp/login_reg/login.jsp");*/
+			model.addAttribute("message", "用户未登陆");
+			model.addAttribute("url","jsp/login_reg/login.jsp");
 			//返回信息跳转页
 			return "forward";
 		}else{

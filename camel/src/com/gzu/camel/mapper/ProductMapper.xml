@@ -286,4 +286,8 @@
 <select id="selectProductDetails" parameterType="int" resultType="productCustom">
 select store.sname,product.pid,product.pname,product.pprice,product.pdes,product.pno,product.pimageno from product,store where product.storeid=store.storeid AND product.pid=#{pid}
 </select>
+
+<select id="slectProductByTid" parameterType="Integer" resultType="product">
+SELECT * FROM product WHERE product.typeid=#{id}
+</select>
 </mapper>

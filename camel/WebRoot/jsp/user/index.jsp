@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="/WEB-INF/c.tld" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,11 +8,13 @@
 <title>商品主页</title>
 </head>
 <body>
-<%
-session.setAttribute("userid", "10010");
- %>
-<form action="${pageContext.request.contextPath }/product/splitPage.action" name="from1">
-<table><!-- 這裡面為測試代碼  可以刪掉，這個頁面為駱駝商城主頁 -->
+	<%
+		session.setAttribute("userid", "10010");
+	%>
+	<form
+		action="${pageContext.request.contextPath }/product/splitPage.action"
+		name="from1">
+		<%-- <table><!-- 這裡面為測試代碼  可以刪掉，這個頁面為駱駝商城主頁 -->
 
 <c:forEach var="allProduct" items="${ allProduct}">  
 <tr>  
@@ -33,10 +35,28 @@ session.setAttribute("userid", "10010");
     <td>${ allType.typeid}</td>  
     <td>${ allType.typename}</td>
 </tr>  
-</c:forEach>
+</c:forEach>${products.value.get(0).typeid}
 </table> 
+ --%>
+	</form>
+	
+		<c:forEach var="products" items="${allProduct}" varStatus="status">
+			<c:if test="${status.index%2==0 }">
+				<br>
+			</c:if>
+			
+			 <h4>${products.key}</h4>
+			<a href="${pageContext.request.contextPath }/product/alllProductType.action?typeid=${products.value[0].typeid}">更多</a>
+				<c:forEach var="product" items="${products.value}">
+				    ${product.pid}
+				    ${product.pname}
+				    ${product.pprice}
+				</c:forEach>
+		
+		</c:forEach><br>
+	<a href="${pageContext.request.contextPath }/product/showCar.action">购物车</a>
+	
 
-</form>
-<a href="${pageContext.request.contextPath }/product/showCar.action">购物车</a>
+
 </body>
 </html>

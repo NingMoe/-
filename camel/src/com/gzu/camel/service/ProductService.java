@@ -1,6 +1,7 @@
 package com.gzu.camel.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -29,5 +30,8 @@ public interface ProductService {
 	public ShopingcarCustom queryCarByUPid(ShopingcarCustom spCustom)throws Exception;
 	//更改购物车购买商品数量
 	public void updateNum(ShopingcarCustom spCustom)throws Exception;
-	
+	//显示首页商品
+	public Map<String,List<Product>> queryProductIndex(Integer count)throws Exception;
+	//查询分类商品
+	public List<Product> queryProductByTid(Integer tid)throws Exception;
 }

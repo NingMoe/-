@@ -47,4 +47,6 @@ public interface ProductMapper {
    
    //商品詳情
    ProductCustom selectProductDetails(int pid)throws Exception;
+   
+   List<Product> slectProductByTid(Integer tid)throws Exception;
 }

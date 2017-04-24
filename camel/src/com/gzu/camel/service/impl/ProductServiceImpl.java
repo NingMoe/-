@@ -1,7 +1,9 @@
 package com.gzu.camel.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -81,5 +83,38 @@ public class ProductServiceImpl implements ProductService {
 		shopingcarMapper.updateByPrimaryKey(spCustom);
 	}
 
+	@Override
+	public Map<String,List<Product>> queryProductIndex(Integer count) throws Exception {
+		Integer type;
+		Map<String,List<Product>> allProduct = new HashMap<String,List<Product>>();
+		List<Product> Products=new ArrayList<Product>();
+		List<ProducttypeCustom> allType=new ArrayList<ProducttypeCustom>();
+		ProductCustom productCustom=new ProductCustom();
+		ProductSplitPageVo pageVo=new ProductSplitPageVo();
+		//查询分类
+		allType=queryProductType();
+		type=allType.size();
+		//首页商品展示
+		for(int i=0;i<type;i++){
+			productCustom.setTypeid(allType.get(i).getTypeid());
+			productCustom.setCurrentPage(0);
+			productCustom.setPageSize(count);
+			pageVo.setProductCustom(productCustom);
+			Products=splitPage(pageVo);
+			allProduct.put(allType.get(i).getTypename(), Products);
+		}
+		
+		
+		
+		return allProduct;
+	}
 
+	@Override
+	public List<Product> queryProductByTid(Integer tid) throws Exception {
+		List<Product> Products=new ArrayList<Product>();
+		Products=productMapper.slectProductByTid(tid);
+		return Products;
+	}
+
+	
 }
