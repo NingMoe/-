@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gzu.camel.mapper.UserMapper;
 import com.gzu.camel.pojo.User;
+import com.gzu.camel.service.AdminService;
 import com.gzu.camel.service.UserService;
 
 @Controller
@@ -20,6 +21,8 @@ import com.gzu.camel.service.UserService;
 public class UserControl {
 @Autowired
 private UserService userService;
+@Autowired
+private AdminService adminService;
 
 //查询用户信息
 @RequestMapping(value="/selectuser")
@@ -45,5 +48,29 @@ public String updateUser(@Validated User user ,BindingResult result,Model model)
 		userService.updateUser(user);
 	return "success";} //返回jsp登陆页面  
  }
+
+@RequestMapping(value="/userinsert")
+public String insertUser(@Validated User user,BindingResult result,Model model) throws Exception{
+	
+	if(user.getUserid()==null){
+		return "login_reg/register";
+	}
+	
+	if (result.hasErrors()) {
+		List<ObjectError> errors = result.getAllErrors();
+		for(ObjectError objectError:errors){
+			System.out.println(objectError.getDefaultMessage());
+		}
+		model.addAttribute("errors", errors);
+		return "login_reg/register";
+	}else{
+	
+	
+		adminService.insertUser(user);
+		return "login_reg/login";
+		
+	}
+	
+}
 
 }

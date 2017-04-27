@@ -16,7 +16,7 @@ private UserMapper userMapper;
 
 @Override
 public List<User> selectUserByid(String userid) throws Exception {
-	return userMapper.selectUser(userid);
+	return (List<User>) userMapper.selectUser(userid);
 }
 
 @Override

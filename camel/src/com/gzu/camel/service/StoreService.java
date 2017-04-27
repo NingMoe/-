@@ -12,4 +12,6 @@ public interface StoreService {
 	public List<Store> selectStore(Integer id)throws Exception;
 	//修改信息
 	public int updateStore(Store store)throws Exception;
+	//模糊查询
+	public List<User> selectAllStoreBy(String nameorid)throws Exception;
 }

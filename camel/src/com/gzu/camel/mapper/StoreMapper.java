@@ -33,7 +33,11 @@ public interface StoreMapper {
     
     List<Store> selectAllStore();
     
-    List<Store> selectStore(Integer id);
+    Store selectStore(Integer id);
     
-    int deletByid(Integer id);
+    void deletByid(Integer id);
+    
+    List<Store> selectAllStoreBy(String id);
+    
+    Store selectStoreByUserid(String userid);
 }

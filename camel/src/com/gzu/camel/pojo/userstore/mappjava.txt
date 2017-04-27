@@ -1,0 +1,5 @@
+   List<UserCustom> selectStoreUser(String id);
+    //更新用户信息
+    int updateStoreUser(UserCustom record);
+    //根据商铺ID查询商铺信息
+	Store selectByStoreId(Integer storeid);

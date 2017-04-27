@@ -261,12 +261,21 @@
   </select>
   <!-- 查询单个用户信息 -->
   <select id="selectUser" parameterType="java.lang.String" resultType="user">
-  select * from user where userid = #{uname,jdbcType=VARCHAR}
+  select * from user where userid = #{userid,jdbcType=VARCHAR}
   </select>
   <!-- 根据id查询是否存在 -->
   <select id="selectid" parameterType="java.lang.String" resultType="java.lang.String">
   select userid from user where userid = #{uname,jdbcType=VARCHAR}
   </select>
-  
-  
+  <!-- 根据id模糊查询用户信息 -->
+  <select id="selectAllUserBy" parameterType="java.lang.String" resultType="user">
+  select * from user where userid like '%${value}%'
+  </select>
+  <!-- 商铺--> 
+  <select id="selectstoreuser" parameterType="java.lang.String" resultType="com.gzu.camel.pojo.UserCustom">
+  		SELECT * FROM  user,store WHERE user.userid=store.userid AND user.userid=#{userid}
+  </select>
+  <select id="selectByStoreId" parameterType="integer" resultType="Store">
+  	SELECT *FROM store WHERE storeid=#{storeid};
+  </select>
 </mapper>

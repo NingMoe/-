@@ -10,10 +10,12 @@ import com.gzu.camel.pojo.User;
 
 @Service
 public interface AdminService {
+	//用户的模糊查询
+	public List<User> selectAllUserBy(String nameorid)throws Exception;
 	//查询用户信息
 	public List<User> queryAllUser()throws Exception;
 	//查询单个用户信息
-	public List<User> selectUserByid(String userid)throws Exception;
+	public User selectUserByid(String userid)throws Exception;
 	//添加用户
 	public int insertUser (User user)throws Exception;
 	//删除用户（根据id）
@@ -29,11 +31,15 @@ public interface AdminService {
 	//添加商家
 	public int insertStore(Store Store)throws Exception;
 	//删除商家
-	public int deletStore(Integer id)throws Exception;
+	public void deletStore(Integer id)throws Exception;
 	//查询商家
-	public List<Store> selectStore(Integer id)throws Exception;
+	public Store selectStore(Integer id)throws Exception;
 	//变更商家数据
 	public int updateStore(Store store)throws Exception;
 	//管理员登陆
 	public Admin login(String adminid)throws Exception;
+	//管理员模糊查询商铺
+	public List<Store> selectAllStoreBy(String id)throws Exception;
+	//根据用户id查询店铺
+	public Store selectStoreByUserid(String userid)throws Exception;
 }

@@ -1,6 +1,8 @@
 package com.gzu.camel.mapper;
 
+import com.gzu.camel.pojo.Store;
 import com.gzu.camel.pojo.User;
+import com.gzu.camel.pojo.UserCustom;
 import com.gzu.camel.pojo.UserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -30,8 +32,17 @@ public interface UserMapper {
     
     List<User> selectAllUser();
     
-    List<User> selectUser(String id);
+    User selectUser(String id);
     
     String selectid(String id);
+    
+    List<User> selectAllUserBy(String nameorid);
+    //--------------------------------------------
+    
+    List<UserCustom> selectStoreUser(String id);
+    //更新用户信息
+    int updateStoreUser(UserCustom record);
+    //根据商铺ID查询商铺信息
+	Store selectByStoreId(Integer storeid);
     
 }

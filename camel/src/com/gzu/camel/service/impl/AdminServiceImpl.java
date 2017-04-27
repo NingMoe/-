@@ -34,8 +34,8 @@ public class AdminServiceImpl implements AdminService{
 	}
 	//查询单个用户信息*******************
 	@Override
-	public List<User> selectUserByid(String userid) throws Exception {
-		return userMapper.selectUser(userid);
+	public User selectUserByid(String userid) throws Exception {
+		return userMapper.selectByPrimaryKey(userid);
 	}
 	//插入用户信息************************
 	@Override
@@ -75,12 +75,12 @@ public class AdminServiceImpl implements AdminService{
 	}
 	//(ok)******************
 	@Override
-	public int deletStore(Integer id) throws Exception {
-		return storeMapper.deletByid(id);
+	public void deletStore(Integer id) throws Exception {
+		storeMapper.deletByid(id);
 	}
 	
 	@Override
-	public List<Store> selectStore(Integer id) throws Exception {
+	public Store selectStore(Integer id) throws Exception {
 		return storeMapper.selectStore(id);
 	}
 	@Override
@@ -91,20 +91,17 @@ public class AdminServiceImpl implements AdminService{
 	public Admin login(String adminid) throws Exception {
 		return adminMapper.selectByPrimaryKey(adminid);
 	}
-	
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
+	@Override
+	public List<User> selectAllUserBy(String nameorid) throws Exception {
+		return userMapper.selectAllUserBy(nameorid);
+	}
+	@Override
+	public List<Store> selectAllStoreBy(String id) throws Exception {
+		return storeMapper.selectAllStoreBy(id);
+	}
+	@Override
+	public Store selectStoreByUserid(String userid) throws Exception {
+		return storeMapper.selectStoreByUserid(userid);
+	}
 
 }

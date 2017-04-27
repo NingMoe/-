@@ -194,15 +194,22 @@
       and userid = #{userid,jdbcType=VARCHAR}
   </update>
   <!-- 查询所有用户 -->
-  <select id="selectAllStore" resultType="com.gzu.camel.pojo.Store">
+  <select id="selectAllStore" resultType="store">
   select * FROM store
   </select>
   <!-- 查询单个用户信息 -->
   <select id="selectStore" parameterType="java.lang.Integer" resultType="store">
   select * from store where storeid = #{storeid,jdbcType=INTEGER}
   </select>
-  <select id="deletByid" parameterType="java.lang.Integer">
+  <select id="deletByid" parameterType="store" >
   delete from store
-  where storeid = #{storeid,jdbcType=INTEGER}
+   where storeid = #{storeid,jdbcType=INTEGER}
+  </select>
+  <select id="selectStoreByUserid" parameterType="java.lang.String" resultType="store">
+  select * from store where userid = #{storeid,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据id模糊查询用户信息 -->
+  <select id="selectAllStoreBy" parameterType="java.lang.String" resultType="store">
+  select * from store where userid like '%${value}%'
   </select>
 </mapper>
