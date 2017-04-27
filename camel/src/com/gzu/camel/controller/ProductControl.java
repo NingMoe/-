@@ -68,10 +68,10 @@ public class ProductControl {
 		return "user/index";
 	}*/
 	//商品首页
-	@RequestMapping(value="/index1",method={RequestMethod.GET})
-	public String index1(Model model) throws Exception{
+	@RequestMapping(value="/index",method={RequestMethod.GET})
+	public String index(Model model) throws Exception{
 		Map<String,List<Product>> allProduct = new HashMap<String,List<Product>>();
-		allProduct=productService.queryProductIndex(6);
+		allProduct=productService.queryProductIndex(7);
 		model.addAttribute("allProduct",allProduct);
 		return "user/index";
 	}
@@ -87,7 +87,7 @@ public class ProductControl {
 		//allProduct=productService.splitPage(pageVo);
 		allProduct=productService.queryProductByTid(typeid);
 		model.addAttribute("allProduct", allProduct);
-		return "user/product/products";
+		return "user/product/more";
 	}
 	//商品詳情頁
 	@RequestMapping(value="details",method={RequestMethod.GET})
@@ -144,7 +144,7 @@ public class ProductControl {
 				//查询购物车里的信息
 				allCarProduct=productService.queryCar(userid);
 				model.addAttribute("allCarProduct", allCarProduct);
-				return "user/car/car";
+				return "user/car/ShoopingCart";
 				
 			}
 		

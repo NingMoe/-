@@ -8,26 +8,28 @@
 <title>购物车</title>
 <!-- 下面是传参的方法 包括两个隐藏的<input/>-->
 <script type="text/javascript" language="javascript">
-	function haha(pid,index) {
+	function sub(pid,index) {
 		var number=document.getElementById(index).value;
 		document.getElementById("number").value =number;
 		document.getElementById("pid").value =pid;
+		document.getElementById("myfrom").action="${pageContext.request.contextPath }/product/updateCar.action";
 		myfrom.submit();
 	}
-/* 	function haha() {
-	document.getElementById("form1").action="${pageContext.request.contextPath }/product/updateCar.action"
-		
+	function buy() {
+		document.getElementById("myfrom").action="${pageContext.request.contextPath }/jsp/user/order/order_info.jsp";
 		myfrom.submit();
-	} */
+	}
 </script>
 </head>
 <body>
 	<!-- 一下测试代码 不需要可以自行删除 -->
+	
 	<form
-		action="${pageContext.request.contextPath }/product/updateCar.action"
+		action=""
 		id="myfrom">
 		<input type="hidden" name="pid" id="pid"/>
 		<input type="hidden" name="number" id="number"/>
+		<input type="button" value="购买" onclick="buy()" />
 		<table border="1">
 			<c:forEach var="all" items="${allCarProduct }" varStatus="status">
 				<tr>
@@ -43,12 +45,15 @@
 						href="${pageContext.request.contextPath }/product/DeleteProduct.action?pid=${all.pid}">删除</a>
 					</td>
 					<td>
-						<input type="button" value="提交" onclick="haha(${ all.pid},'${status.index}')"/>
+						<input type="button" value="提交" onclick="sub(${ all.pid},'${status.index}')"/>
 					</td>
+					
 				</tr>
 			</c:forEach>
+		
 		</table>
-		<input type="button" value="购买"/>
+		<input onclick="buy(${ all.pid})" type="button" value="购买"/>
 	</form>
+	
 </body>
 </html>

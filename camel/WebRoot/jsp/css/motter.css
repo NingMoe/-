@@ -1,0 +1,396 @@
+html{word-break:break-all;}
+body{
+	color:#666;
+    position: relative;
+    background-color:#fff;
+    font:normal 12px/1.5 Arial,SimSun;
+}
+ul,il,p,h5,em,b,span,a{margin:0;padding:0;} 
+/*top*/
+ #top_action_wrap{ height:100px;background:rgb(239,37,37);data-height:100px;}
+.top {position:relative;width:100%;border-bottom:1px;background:#f5f5f5;height:35px;}
+ .top .top_center{position:relative;margin:0 auto;width:1190px;height:35px;}
+.top .top_center #top_center_left{float:left;height:35px;margin:0;line-height:35px;}
+.top .top_center #top_center_right{float:right;}
+#top_center_left img{
+	width:24px;
+	height:100%;
+	border:0;
+	margin-right:3px;
+	float:left;
+}
+#top_center_left a{
+	display:block;
+	height:35px;
+	border:0;
+	line-height:35px;
+	float:left;
+	color:#000000;
+	}
+#top_center_left a:hover{color:red;
+	 text-decoration:underline;}
+#top_center_right .top_one{
+	width:100px;
+	height:100%;
+	padding:0;
+	position:relative;
+	float:left;
+ }
+#top_center_right .top_one span{
+	 display:block;
+	 float:left;
+	 width:80px;
+	 height:30px;
+	 margin-top:5px;
+	 line-height:30px;
+	 margin-left:30px;
+ }
+.top_center a{
+	line-height:35px;
+	border:0;
+	color:#000000;
+	font-family: "Microsoft yahei" !important;
+	font:13px/1.5 arial,tahoma,宋体;	
+	text-decoration:none;
+}
+.top_center a:hover{ 
+	 color:red;
+	 text-decoration:underline;
+	}
+#top_center_right div{position:relative;float:left;margin:0;padding:10px}
+ 
+ /*图标*/
+.main-header {
+    width: 1190px;
+    height: 100px;
+    margin: 0 auto;
+
+}
+.main-header .sn-logo {
+    float: left;
+    margin-right: 10px;
+}
+.main-header .sn-logo a {
+    display: block;
+    width: 190px;
+    height: 100px;
+}
+.main-header .sn-logo a, .main-header .sn-logo img {
+    display: block;
+    width: 190px;
+    height: 100px;
+}
+.main-header .ju-logo {
+    float: left;
+    margin-top: 25px;
+    margin-right: 10px;
+}
+.main-header .ju-logo a {
+    display: block;
+    width: 115px;
+    height: 40px;
+}
+.main-header .ju-logo a, .main-header .ju-logo img {
+    display: block;
+    width: 115px;
+    height: 40px;
+}
+.main-header .ju-city {
+    display: inline;
+    float: left;
+    height: 60px;
+    margin-top: 30px;
+}
+.ui-city{
+	display:inline-block;
+	font-size: 12px;
+    position: relative;
+    z-index: 0;
+}
+ .ui-city a{
+  line-height:14px;
+  color:#333;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+}
+ .ui-city-toggle {
+    display: inline-block;
+    border: 1px solid #bbb;
+    padding: 6px 5px 6px 6px;
+    background: #fff;
+    position: relative;
+    z-index: 100;
+}
+.ui-city-toggle .address-placement {
+    font-style: normal;
+    float: left;
+}
+.ui-city-toggle span {
+    padding-right: 5px;
+}
+.ui-city .arr{
+	-moz-transition: All .2s ease;
+}
+.ui-city-toggle .arr {
+    margin-right: 5px;
+    position: relative;
+    top: 5px;
+    float: left;
+}
+.ui-city .arr {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-color: #bbb transparent transparent;
+    border-width: 5px;
+    border-style: solid dashed dashed;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+.main-header .ju-ensure {
+    float: right;
+    margin-top: 17px;
+}
+.ju-ensure a{
+	text-decoration: none;
+	outline: 0;
+}
+.main-header .ju-ensure img {
+    display: block;
+    width: 352px;
+    height: 66px;
+}
+.fieldset img {
+    border: 0;
+}
+.ju-sale .main-nav {
+    background: #ed3b3b;
+    width:100%;
+    width:35px;
+}
+.main-nav {
+    position: relative;
+    width: 100%;
+    min-width: 1190px;
+    overflow: visible;
+    height: 36px;
+    z-index: 9;
+}
+.main-nav .main-nav-category {
+    position: absolute;
+    width: 190px;
+    top: 0;
+    left: 50%;
+    margin-left: -595px;
+}
+.main-nav .main-nav-category .nmc-all {
+    position: relative;
+    display: block;
+    font-size: 14px;
+    padding-left: 16px;
+    color: #fff !important;
+    text-decoration: none;
+    z-index: 7674;
+    background: #df2828;
+    height: 36px;
+    line-height: 36px;
+    overflow: hidden;
+    cursor: default;
+    font-family: "微软雅黑";
+}
+.main-nav .main-nav-category .nmc-all em {
+    font-size: 14px;
+    margin-right: 8px;
+    width: 14px;
+    height: 36px;
+}
+.ng-iconfont, em {
+    font-style: normal;
+}
+.main-nav .main-nav-category .nmc-all span {
+    font-weight: bold;
+}
+
+/*商品展示*/
+.ju-prodlist-wrapper {
+    width: 1190px;
+    margin: 0 auto;
+}
+.clearfix::after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clear, .clearfix::after {
+    display: block;
+    height: 0;
+    clear: both;
+}
+.ju-prodlist-wrapper ul {
+    width: 1209px;
+    margin-left: 0;
+}
+.ju-prodlist-wrapper ul li {
+    float: left;
+    margin: 20px 19px 0 0;
+}
+.ju-prodlist-item {
+    position: relative;
+    width: 384px;
+    font-family: "microsoft yahei";
+    overflow: hidden;
+}
+.ju-prodlist-item .item-wrap {
+    width: 384px;
+    height: 422px;
+}
+.ju-prodlist-item .prd-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 384px;
+    height: 100%;
+    z-index: 6;
+    background: url(images/space.png?v=09e42) repeat;
+    
+}
+.ju-prodlist-item .prd-pic {
+    display: block;
+    width: 384px;
+    height: 288px;
+}
+.lazy-loading, img.err-product {
+    background: url(Picuter/blankbg.gif?v=2015102601) 50% 50% no-repeat;
+}
+.ju-prodlist-item .detail {
+    width: 364px;
+    padding: 0 10px 2px 10px;
+    background: #fffff2;
+}
+.ju-prodlist-item .fixed-height-name {
+    height: 20px;
+}
+.ju-prodlist-item .prd-name {
+    width: 100%;
+    display: inline-block;
+    padding: 6px 0 0 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    overflow: hidden;
+    max-height: 40px;
+}
+.ju-prodlist-item .fixed-height-desp {
+    height: 28px;
+}
+.ju-prodlist-item .prd-desp-items {
+    max-height: 56px;
+    overflow: hidden;
+}
+.ju-prodlist-item .prd-desp-items span {
+    float: left;
+  
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    margin: 0 4px 6px 0;
+    
+    padding: 0 8px;
+    border: 1px solid #ed3b3b;
+    border-radius: 2px;
+    color: #ed3b3b;
+    overflow: hidden;
+}
+.clearfix::after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.ju-prodlist-item .sale {
+    width:364px;
+    height: 64px;
+    padding: 0 10px;
+    background: #ed3b3b;
+    overflow: hidden;
+    position: relative;
+    z-index: 9;
+}
+ 
+.ju-prodlist-item .prd-price {
+    float: left;
+    position: relative;
+    height: 64px;
+    overflow: hidden;
+    color: #fff;
+}
+.ju-prodlist-item .sn-price {
+    float: left;
+    line-height: 66px;
+}
+.ju-prodlist-item .sn-price i {
+    font-size: 24px;
+}
+.sn-price i {
+    font-family: arial;
+}
+.ju-prodlist-item .sn-price em {
+    font-size: 36px;
+}
+.sn-price em {
+    font-family: Tahoma;
+}
+.ju-prodlist-item .sn-price em b {
+    font-size: 24px;
+    font-weight: normal;
+}
+.ju-prodlist-item .discount {
+    position: relative;
+    float: left;
+    margin-left: 3px;
+}
+.ju-prodlist-item .discount .dis-num {
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
+.ju-prodlist-item .discount .full-price {
+    float: left;
+    margin-top: 33px;
+    text-decoration: line-through;
+}
+.ju-prodlist-item .discount .full-price b {
+    font-weight: normal;
+}
+.ju-prodlist-item .prd-sale {
+    position: absolute;
+    right:10px;
+    width:150px;
+    height: 64px;
+}
+.ju-prodlist-item .sale-amount {
+	position:absolute;
+    left:10px;
+    width:150px;
+    margin-top: 4px;
+    text-align: right;
+    color: #fff;
+}
+.ju-prodlist-item .sale-amount, .ju-prodlist-item .book-amount {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    margin-top: 4px;
+    text-align: right;
+    color: #fff;
+}
+.ju-prodlist-item .sale-amount, .ju-prodlist-item .book-amount {
+    text-align: right;
+    color: #fff;
+}
